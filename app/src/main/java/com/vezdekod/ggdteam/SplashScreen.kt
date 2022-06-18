@@ -13,13 +13,9 @@ import java.nio.charset.Charset
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
-    lateinit var binding: ActivitySplashScreenBinding
-
-    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_splash_screen)
 
         val dataLoadJob = GlobalScope.launch(Dispatchers.IO) {
             categoriesLoad()

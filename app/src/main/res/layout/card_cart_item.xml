@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/cart_item_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="15dp"
+        android:src="@drawable/food_example"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cart_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:ellipsize="end"
+        android:lines="2"
+        android:text="Том Ям"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/cart_item_image"
+        app:layout_constraintTop_toTopOf="@+id/cart_item_image" />
+
+    <TextView
+        android:id="@+id/cart_item_old_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="2"
+        android:text="560 Р"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_item_image"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/cart_item_new_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="2"
+        android:text="480 Р"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/cart_item_old_price"
+        app:layout_constraintEnd_toEndOf="@+id/cart_item_old_price" />
+
+    <ImageButton
+        android:id="@+id/cart_item_minus"
+        android:layout_width="44dp"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:backgroundTint="@color/bg_color"
+        android:src="@drawable/ic_minus"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_item_image"
+        app:layout_constraintStart_toEndOf="@+id/cart_item_image"
+        app:tint="@color/red" />
+
+    <TextView
+        android:id="@+id/cart_item_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="2"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
+        app:layout_constraintStart_toEndOf="@+id/cart_item_minus"
+        app:layout_constraintTop_toTopOf="@+id/cart_item_minus" />
+
+    <ImageButton
+        android:id="@+id/cart_item_plus"
+        android:layout_width="44dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="15dp"
+        android:backgroundTint="@color/bg_color"
+        android:src="@drawable/ic_plus"
+        app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
+        app:layout_constraintStart_toEndOf="@+id/cart_item_counter"
+        app:tint="@color/red" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/bg_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

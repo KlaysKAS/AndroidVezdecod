@@ -1,9 +1,17 @@
 package com.vezdekod.ggdteam
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
+import androidx.core.graphics.drawable.toDrawable
+import androidx.core.view.get
 import androidx.recyclerview.widget.GridLayoutManager
+import com.vezdekod.ggdteam.cart.CartActivity
+import com.vezdekod.ggdteam.cart.CartItem
 import com.vezdekod.ggdteam.databinding.ActivityMainBinding
 import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
 
@@ -18,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val tab = binding.mainTabs
-
         App.category.forEach {
             val newTab = tab.newTab().setText(it.name)
             tab.addTab(newTab)
@@ -27,5 +34,16 @@ class MainActivity : AppCompatActivity() {
         val menuRecycler = binding.mainMenuRecycler
         menuRecycler.layoutManager = GridLayoutManager(this, 2)
         menuRecycler.adapter = MenuRecyclerAdapter(App.menu)
+
+        binding.mainLogo.menu.get(0).setOnMenuItemClickListener {
+            when (it.itemId) {
+                R.id.action_cart -> {
+                    intent = Intent(baseContext, CartActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                else -> false
+            }
+        }
     }
 }
