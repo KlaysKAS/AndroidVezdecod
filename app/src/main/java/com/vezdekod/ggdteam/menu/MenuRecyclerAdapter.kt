@@ -26,7 +26,7 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>) :
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
-            ivImage.setImageResource(R.drawable.i1)
+            ivImage.setImageResource(R.drawable.food_example)
             if (item.tagId.contains(2)) ivVegetarian.visibility = View.VISIBLE else ivVegetarian.visibility = View.GONE
             if (item.tagId.contains(4)) ivSpicy.visibility = View.VISIBLE else ivSpicy.visibility = View.GONE
             if (item.priceOld != null) ivSale.visibility = View.VISIBLE else ivSale.visibility = View.GONE
