@@ -33,7 +33,8 @@ class MainActivity : AppCompatActivity() {
 
         val menuRecycler = binding.mainMenuRecycler
         menuRecycler.layoutManager = GridLayoutManager(this, 2)
-        menuRecycler.adapter = MenuRecyclerAdapter(App.menu)
+        val adapter = MenuRecyclerAdapter(App.menu)
+        menuRecycler.adapter = adapter
 
         binding.mainLogo.menu.get(0).setOnMenuItemClickListener {
             when (it.itemId) {
@@ -45,5 +46,10 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.mainMenuRecycler.adapter?.notifyDataSetChanged()
     }
 }

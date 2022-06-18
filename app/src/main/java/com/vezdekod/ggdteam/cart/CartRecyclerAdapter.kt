@@ -13,7 +13,7 @@ import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.R
 import com.vezdekod.ggdteam.menu.MenuItem
 
-class CartRecyclerAdapter(private val menuItem: List<MenuItem> = App.cart.listItem.keys.toList()):
+class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart.listItem.keys.toMutableList()):
     RecyclerView.Adapter<CartRecyclerAdapter.CartViewHolder>() {
 
     inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -48,6 +48,10 @@ class CartRecyclerAdapter(private val menuItem: List<MenuItem> = App.cart.listIt
             ivMinus.setOnClickListener {
                 App.cart.deleteItem(item)
                 ivCounter.text = App.cart.getItemCount(item).toString()
+                if (ivCounter.text == "0") {
+                    menuItem.remove(item)
+                    notifyDataSetChanged()
+                }
             }
         }
     }
@@ -55,7 +59,7 @@ class CartRecyclerAdapter(private val menuItem: List<MenuItem> = App.cart.listIt
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CartViewHolder {
         val itemView =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.menu_item_card, parent, false)
+                .inflate(R.layout.card_cart_item, parent, false)
         return CartViewHolder(itemView)
     }
 

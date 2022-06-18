@@ -3,11 +3,11 @@ package com.vezdekod.ggdteam
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.vezdekod.ggdteam.databinding.ActivityDetailsBinding
 import com.vezdekod.ggdteam.menu.MenuItem
+import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
 
-class DetailsActivity : AppCompatActivity() {
+class DetailsActivity() : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
 
     @SuppressLint("SetTextI18n")
@@ -18,6 +18,7 @@ class DetailsActivity : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             onBackPressed()
+            MenuRecyclerAdapter.holder?.update()
         }
 
         val item: MenuItem = intent.getSerializableExtra("item") as MenuItem
@@ -28,5 +29,9 @@ class DetailsActivity : AppCompatActivity() {
         binding.proteins.text = "${item.proteins_per_100_grams} г"
         binding.fats.text = "${item.fats_per_100_grams} г"
         binding.carbohydrates.text = "${item.carbohydrates_per_100_grams} г"
+        binding.addButton.text = "В корзину за ${item.priceCurrent / 100.0} ₽"
+        binding.addButton.setOnClickListener {
+            App.cart.addItem(item)
+        }
     }
 }
