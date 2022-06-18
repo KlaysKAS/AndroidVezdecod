@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#F15412</color>
     <color name="bg_color">#F5F5F5</color>
+    <color name="tint">#20000000</color>
 </resources>

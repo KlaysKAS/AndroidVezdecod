@@ -3,27 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/menu_item_card"
-    android:layout_width="167.5dp"
+    android:layout_width="match_parent"
     android:layout_height="290dp"
-    android:background="@drawable/gray_background">
+    android:background="@drawable/gray_background"
+    android:layout_margin="4dp">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/menu_item_card_name"
         app:layout_constraintTop_toTopOf="parent"
         app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
         android:layout_marginBottom="12dp">
 
         <ImageView
             android:id="@+id/menu_item_card_photo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/food_example"
-
+            android:src="@drawable/i1"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/gray_background"/>
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <ImageView
             android:id="@+id/menu_item_card_specials"
@@ -88,7 +88,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/menu_item_card_old_cost_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -8,18 +8,20 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/main_logo"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:tint="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
+        app:srcCompat="@drawable/ic_main_logo" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_category_recycler"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
@@ -31,11 +33,26 @@
         android:id="@+id/main_menu_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="10dp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toTopOf="@id/main_cart_cost"
+        app:layout_constraintTop_toBottomOf="@+id/main_category_recycler"
+        tools:listitem="@layout/menu_item_card" />
 
+    <Button
+        android:id="@+id/main_cart_cost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="12dp"
+        android:background="@drawable/gray_background"
+        android:paddingVertical="8dp"
+        android:text="some text"
+        android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_category_recycler" />
+        app:layout_constraintTop_toBottomOf="@id/main_menu_recycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
