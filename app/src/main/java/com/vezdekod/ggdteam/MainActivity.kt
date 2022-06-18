@@ -22,51 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         val categoryRecycler = binding.mainCategoryRecycler
         categoryRecycler.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        categoryRecycler.adapter = CategoryRecyclerAdapter(
-            listOf(
-                "Роллы",
-                "Пицца",
-                "Суши",
-                "Горячие блюда"
-            )
-        )
-
+        App.category?.let {
+            categoryRecycler.adapter = CategoryRecyclerAdapter(it)
+        }
         val menuRecycler = binding.mainMenuRecycler
         menuRecycler.layoutManager = GridLayoutManager(this, 2)
-        menuRecycler.adapter = MenuRecyclerAdapter(
-            listOf(
-                MenuItem(
-                    0,
-                    1,
-                    "Удон",
-                    "Просто Удон",
-                    "",
-                    700,
-                    800,
-                    300,
-                    "г",
-                    10.0,
-                    10.0,
-                    10.0,
-                    10.0
-                ),
-                MenuItem(
-                    1,
-                    1,
-                    "Бубон",
-                    "Просто Бубон",
-                    "",
-                    700,
-                    800,
-                    300,
-                    "г",
-                    10.0,
-                    10.0,
-                    10.0,
-                    10.0
-                )
-            )
-        )
+        menuRecycler.adapter = MenuRecyclerAdapter(App.menu)
 
 
     }
