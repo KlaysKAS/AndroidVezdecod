@@ -1,6 +1,7 @@
 package com.vezdekod.ggdteam.menu
 
 import android.annotation.SuppressLint
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,10 +28,13 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Ad
             ivName.text = item.name
             ivWeight.text = "${item.measure} ${item.measure_unit}"
             ivNewCost.text = "${item.priceCurrent} ₽"
-            if (item.priceOld != null)
+            if (item.priceOld != null) {
                 ivOldCost.text =  "${item.priceOld} ₽"
-            else
+                ivOldCost.paintFlags = ivOldCost.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }
+            else {
                 ivOldCost.visibility = View.GONE
+            }
         }
     }
 
