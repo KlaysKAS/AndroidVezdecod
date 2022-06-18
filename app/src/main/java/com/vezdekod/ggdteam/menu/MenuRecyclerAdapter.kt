@@ -1,6 +1,7 @@
 package com.vezdekod.ggdteam.menu
 
 import android.annotation.SuppressLint
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,8 +22,8 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Ad
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
-//            ivImage.setImageBitmap()
-//            ivSpecials.setImageBitmap()
+            ivImage.setImageResource(R.mipmap.photo)
+            ivSpecials.setImageResource(R.drawable.ic_vegeterian)
             ivName.text = item.name
             ivWeight.text = "${item.measure} ${item.measure_unit}"
             ivCost.text = "${item.priceCurrent} ₽ ${item.priceOld} ₽"

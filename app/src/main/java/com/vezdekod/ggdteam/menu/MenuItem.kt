@@ -4,7 +4,6 @@ import com.google.gson.GsonBuilder
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
-import com.vezdekod.ggdteam.categories.Category
 
 data class MenuItem(
     @SerializedName("id")
