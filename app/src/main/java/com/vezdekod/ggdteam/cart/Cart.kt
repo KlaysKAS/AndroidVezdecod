@@ -42,4 +42,11 @@ class Cart {
         return listItem[menuItem] ?: 0
     }
 
+    fun getTotalCost(): Int {
+        var sum = 0
+        listItem.forEach {
+             sum += it.value * it.key.priceCurrent
+        }
+        return sum
+    }
 }

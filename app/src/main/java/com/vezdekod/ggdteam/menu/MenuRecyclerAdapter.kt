@@ -21,12 +21,8 @@ import java.lang.Exception
 class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
     RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
-    companion object {
-        var holder: MenuViewHolder? = null
-    }
-
     @SuppressLint("ResourceAsColor")
-    inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), NotifyInterface {
+    inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivImage: ImageView = itemView.findViewById(R.id.menu_item_card_photo)
         private val ivSpicy: ImageView = itemView.findViewById(R.id.menu_item_card_specials_spicy)
         private val ivVegetarian: ImageView = itemView.findViewById(R.id.menu_item_card_specials_vegetarian)
@@ -41,17 +37,8 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
         private val ivCount: TextView = itemView.findViewById(R.id.menu_item_counter)
         private val ivBuyer: LinearLayout = itemView.findViewById(R.id.main_item_linear)
 
-        override fun update() {
-            try {
-                notifyDataSetChanged()
-            } catch (e: Exception) {
-
-            }
-        }
-
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
-            holder = this
             ivImage.setImageResource(R.drawable.food_example)
             if (item.tagId.contains(2)) ivVegetarian.visibility = View.VISIBLE else ivVegetarian.visibility = View.GONE
             if (item.tagId.contains(4)) ivSpicy.visibility = View.VISIBLE else ivSpicy.visibility = View.GONE
@@ -120,11 +107,4 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
     }
 
     override fun getItemCount(): Int = menuItem.size
-
-
-
-}
-
-interface NotifyInterface {
-    abstract fun update()
 }

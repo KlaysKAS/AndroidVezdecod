@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.vezdekod.ggdteam.databinding.ActivityDetailsBinding
 import com.vezdekod.ggdteam.menu.MenuItem
-import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
 
-class DetailsActivity() : AppCompatActivity() {
+class DetailsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding
 
     @SuppressLint("SetTextI18n")
@@ -18,7 +17,6 @@ class DetailsActivity() : AppCompatActivity() {
 
         binding.backButton.setOnClickListener {
             onBackPressed()
-            MenuRecyclerAdapter.holder?.update()
         }
 
         val item: MenuItem = intent.getSerializableExtra("item") as MenuItem

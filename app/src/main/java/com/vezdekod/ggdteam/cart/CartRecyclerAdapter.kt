@@ -5,6 +5,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -13,7 +14,7 @@ import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.R
 import com.vezdekod.ggdteam.menu.MenuItem
 
-class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart.listItem.keys.toMutableList()):
+class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart.listItem.keys.toMutableList(), val up: UpdateCostInt):
     RecyclerView.Adapter<CartRecyclerAdapter.CartViewHolder>() {
 
     inner class CartViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +25,6 @@ class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart
         private val ivCounter: TextView = itemView.findViewById(R.id.cart_item_counter)
         private val ivNewCost: TextView = itemView.findViewById(R.id.cart_item_new_price)
         private val ivOldCost: TextView = itemView.findViewById(R.id.cart_item_old_price)
-
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
@@ -43,6 +43,7 @@ class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart
             ivPlus.setOnClickListener {
                 App.cart.addItem(item)
                 ivCounter.text = App.cart.getItemCount(item).toString()
+                up.update()
             }
 
             ivMinus.setOnClickListener {
@@ -52,6 +53,7 @@ class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart
                     menuItem.remove(item)
                     notifyDataSetChanged()
                 }
+                up.update()
             }
         }
     }
