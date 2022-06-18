@@ -27,4 +27,15 @@
         app:layout_constraintTop_toBottomOf="@+id/main_logo"
         tools:listitem="@layout/category_card" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_menu_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_category_recycler" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
