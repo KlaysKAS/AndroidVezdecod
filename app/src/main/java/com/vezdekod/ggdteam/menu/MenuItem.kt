@@ -50,12 +50,20 @@ data class MenuItem(
     @Expose
     val tagId: List<Int> = listOf()
 ) : Serializable {
-    companion object {
+    companion object : Comparator<MenuItem>{
         fun getListFromJSON(json: String?): List<MenuItem>? {
             val builder = GsonBuilder()
             val gson = builder.create()
             val listType = object : TypeToken<List<MenuItem>?>() {}.type
             return gson.fromJson(json, listType)
         }
+
+        override fun compare(p0: MenuItem?, p1: MenuItem?): Int {
+            return if (p0!!.id == p1!!.id) 0
+            else if (p0.id < p1.id) -1
+            else +1
+        }
     }
+
+
 }

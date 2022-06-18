@@ -2,6 +2,7 @@ package com.vezdekod.ggdteam
 
 import android.app.Application
 import com.vezdekod.ggdteam.attributes.Attribute
+import com.vezdekod.ggdteam.cart.Cart
 import com.vezdekod.ggdteam.categories.Category
 import com.vezdekod.ggdteam.menu.MenuItem
 
@@ -11,6 +12,7 @@ class App: Application() {
         var category: List<Category> = listOf()
         var attribute: List<Attribute> = listOf()
         var menu: List<MenuItem> = listOf()
+        val cart = Cart()
     }
 
     override fun onCreate() {

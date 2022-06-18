@@ -6,28 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:tint="@color/red"
+        android:paddingTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_main_logo" />
+        app:logo="@drawable/ic_main_logo"
+        app:menu="@menu/main_toolbar_menu"
+        app:navigationIcon="@drawable/ic_filter" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_category_recycler"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_tabs"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="10dp"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_logo"
-        tools:listitem="@layout/category_card" />
+        app:tabIndicator="@drawable/selected_category"
+        app:tabIndicatorGravity="center"
+        app:tabMode="scrollable"
+        app:tabPaddingBottom="32dp"
+        app:tabPaddingEnd="24dp"
+        app:tabPaddingStart="24dp"
+        app:tabPaddingTop="32dp"
+        app:tabRippleColor="@color/white"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/tabLayoutStyle"
+        app:tabTextColor="@color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_menu_recycler"
@@ -36,7 +46,7 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@id/main_cart_cost"
-        app:layout_constraintTop_toBottomOf="@+id/main_category_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/main_tabs"
         tools:listitem="@layout/menu_item_card" />
 
     <Button

@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:fontFamily" >@font/roboto_regular</item>
-
+        <item name="android:textAllCaps" >false</item>
     </style>
     
     <style name="addButtonStyle">
@@ -27,8 +27,18 @@
         <item name="android:textSize">16sp</item>
     </style>
 
+    <style name="tabLayoutStyle" parent="@android:style/TextAppearance.Widget.TabWidget">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+
     <style name="Theme.VezdecodeApp.Launcher">
         <item name="android:windowBackground">@drawable/splash_drawable</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="Theme.VezdecodeApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.VezdecodeApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.VezdecodeApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
