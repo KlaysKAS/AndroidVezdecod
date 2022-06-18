@@ -1,5 +1,6 @@
 package com.vezdekod.ggdteam.categories
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.vezdekod.ggdteam.R
 class CategoryRecyclerAdapter(private val names: List<String>): RecyclerView.Adapter<CategoryRecyclerAdapter.CategoryViewHolder>() {
     private var items = mutableListOf<View>()
 
+    @SuppressLint("ResourceAsColor")
     inner class CategoryViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         private val textView: TextView = itemView.findViewById(R.id.category_card_text)
 
@@ -18,9 +20,11 @@ class CategoryRecyclerAdapter(private val names: List<String>): RecyclerView.Ada
             itemView.setOnClickListener {
                 items.forEach { views ->
                     views.isSelected = it == views
+                    views.findViewById<TextView>(R.id.category_card_text).isSelected = it == views
                 }
             }
             itemView.isSelected = false
+            itemView.findViewById<TextView>(R.id.category_card_text).isSelected = false
         }
 
         fun bind(name: String) {
