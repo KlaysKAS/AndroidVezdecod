@@ -17,17 +17,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_main_logo" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/main_category_recycler"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/main_tabs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_logo"
-        tools:listitem="@layout/category_card" />
+        app:tabMode="scrollable"
+        app:tabIndicatorGravity="center"
+        app:tabSelectedTextColor="@color/white"
+        app:tabIndicator="@drawable/selected_category"
+        app:tabTextColor="@color/black"
+        app:tabRippleColor="@color/white"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_menu_recycler"
@@ -36,7 +40,7 @@
         android:layout_marginHorizontal="12dp"
         android:layout_marginTop="12dp"
         app:layout_constraintBottom_toTopOf="@id/main_cart_cost"
-        app:layout_constraintTop_toBottomOf="@+id/main_category_recycler"
+        app:layout_constraintTop_toBottomOf="@+id/main_tabs"
         tools:listitem="@layout/menu_item_card" />
 
     <Button
@@ -54,5 +58,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_menu_recycler" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

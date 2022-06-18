@@ -2,16 +2,12 @@ package com.vezdekod.ggdteam
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
+import androidx.appcompat.app.AppCompatActivity
 import com.vezdekod.ggdteam.attributes.Attribute
 import com.vezdekod.ggdteam.categories.Category
 import com.vezdekod.ggdteam.menu.MenuItem
 import kotlinx.coroutines.*
-import org.json.JSONObject
 import java.nio.charset.Charset
 
 @SuppressLint("CustomSplashScreen")

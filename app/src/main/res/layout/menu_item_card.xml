@@ -5,34 +5,67 @@
     android:id="@+id/menu_item_card"
     android:layout_width="match_parent"
     android:layout_height="290dp"
-    android:background="@drawable/gray_background"
-    android:layout_margin="4dp">
+    android:layout_margin="4dp"
+    android:background="@drawable/gray_background">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/menu_item_card_name"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="12dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="0dp"
-        android:layout_marginBottom="12dp">
+        app:layout_constraintBottom_toTopOf="@id/menu_item_card_name"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/menu_item_card_photo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/i1"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <LinearLayout
             android:id="@+id/menu_item_card_specials"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_sale"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/menu_item_card_specials_sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_sale"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/menu_item_card_specials_vegetarian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_vegeterian"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/menu_item_card_specials_spicy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_spicy"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -74,16 +107,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/menu_item_card_new_cost_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="720 ₽"
-                android:layout_marginVertical="12dp"
                 android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="12dp"
+                android:text="720 ₽"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -91,8 +124,9 @@
                 android:id="@+id/menu_item_card_old_cost_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="800 ₽"
                 android:layout_marginVertical="12dp"
+                android:text="800 ₽"
+                android:visibility="gone"
                 android:textSize="14sp" />
 
 

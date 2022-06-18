@@ -10,12 +10,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.R
 
-class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
+class MenuRecyclerAdapter(private val menuItem: List<MenuItem>) :
+    RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
     @SuppressLint("ResourceAsColor")
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val ivImage: ImageView = itemView.findViewById(R.id.menu_item_card_photo)
-        private val ivSpecials: ImageView = itemView.findViewById(R.id.menu_item_card_specials)
+        private val ivSpicy: ImageView = itemView.findViewById(R.id.menu_item_card_specials_spicy)
+        private val ivVegetarian: ImageView = itemView.findViewById(R.id.menu_item_card_specials_vegetarian)
+        private val ivSale: ImageView = itemView.findViewById(R.id.menu_item_card_specials_sale)
         private val ivName: TextView = itemView.findViewById(R.id.menu_item_card_name)
         private val ivWeight: TextView = itemView.findViewById(R.id.menu_item_card_weight)
         private val ivNewCost: TextView = itemView.findViewById(R.id.menu_item_card_new_cost_text)
@@ -23,16 +26,19 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Ad
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
-//            ivImage.setImageBitmap()
-//            ivSpecials.setImageBitmap()
+            ivImage.setImageResource(R.drawable.i1)
+            if (item.tagId.contains(2)) ivVegetarian.visibility = View.VISIBLE else ivVegetarian.visibility = View.GONE
+            if (item.tagId.contains(4)) ivSpicy.visibility = View.VISIBLE else ivSpicy.visibility = View.GONE
+            if (item.priceOld != null) ivSale.visibility = View.VISIBLE else ivSale.visibility = View.GONE
+
             ivName.text = item.name
             ivWeight.text = "${item.measure} ${item.measure_unit}"
-            ivNewCost.text = "${item.priceCurrent} ₽"
+            ivNewCost.text = "${item.priceCurrent / 100.0} ₽"
             if (item.priceOld != null) {
-                ivOldCost.text = "${item.priceOld} ₽"
-                ivOldCost.paintFlags = (ivOldCost.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG)
-            }
-            else {
+                ivOldCost.text = "${item.priceOld / 100.0} ₽"
+                ivOldCost.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+                ivOldCost.visibility = View.VISIBLE
+            } else {
                 ivOldCost.visibility = View.GONE
             }
         }

@@ -19,4 +19,10 @@
         <item name="android:windowBackground">@drawable/splash_drawable</item>
         <item name="android:windowFullscreen">true</item>
     </style>
+    <style name="Theme.VezdecodeApp.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.VezdecodeApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.VezdecodeApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
