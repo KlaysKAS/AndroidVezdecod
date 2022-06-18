@@ -41,15 +41,11 @@
 
     <Button
         android:id="@+id/main_cart_cost"
+        style="@style/addButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="12dp"
         android:background="@drawable/gray_background"
-        android:paddingVertical="8dp"
         android:text="some text"
-        android:textSize="16sp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

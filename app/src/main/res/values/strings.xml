@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">VezdecodeApp</string>
+    <string name="weight">Вес</string>
+    <string name="energy">Энерг. ценность</string>
+    <string name="proteins">Белки</string>
+    <string name="fats">Жиры</string>
+    <string name="carbohydrates">Углеводы</string>
 </resources>

@@ -12,7 +12,19 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:fontFamily" >@font/roboto_regular</item>
 
+    </style>
+    
+    <style name="addButtonStyle">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginTop">12dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="Theme.VezdecodeApp.Launcher">

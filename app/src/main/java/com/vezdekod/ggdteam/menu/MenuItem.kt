@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.google.gson.reflect.TypeToken
+import java.io.Serializable
 
 data class MenuItem(
     @SerializedName("id")
@@ -48,7 +49,7 @@ data class MenuItem(
     @SerializedName("tag_ids")
     @Expose
     val tagId: List<Int> = listOf()
-) {
+) : Serializable {
     companion object {
         fun getListFromJSON(json: String?): List<MenuItem>? {
             val builder = GsonBuilder()

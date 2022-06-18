@@ -1,13 +1,16 @@
 package com.vezdekod.ggdteam.menu
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.vezdekod.ggdteam.DetailsActivity
 import com.vezdekod.ggdteam.R
 
 class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
@@ -35,7 +38,15 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Ad
             else {
                 ivOldCost.visibility = View.GONE
             }
+
+            itemView.setOnClickListener {
+                itemView.context.startActivity(
+                    Intent(itemView.context, DetailsActivity::class.java).putExtra("item", item)
+                )
+            }
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {

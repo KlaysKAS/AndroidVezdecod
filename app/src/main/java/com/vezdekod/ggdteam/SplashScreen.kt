@@ -13,7 +13,7 @@ import java.nio.charset.Charset
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
-    lateinit var binding: ActivitySplashScreenBinding
+    private lateinit var binding: ActivitySplashScreenBinding
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
