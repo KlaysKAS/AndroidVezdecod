@@ -20,7 +20,7 @@
             android:id="@+id/menu_item_card_photo"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/i1"
+            android:src="@drawable/food_example"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
@@ -85,7 +85,7 @@
                 android:layout_marginVertical="12dp"
                 android:layout_marginHorizontal="8dp"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/menu_item_card_old_cost_text"
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:text="800 ₽"
                 android:layout_marginVertical="12dp"
-                android:textSize="14sp" />
+                android:textSize="12sp" />
 
 
         </LinearLayout>

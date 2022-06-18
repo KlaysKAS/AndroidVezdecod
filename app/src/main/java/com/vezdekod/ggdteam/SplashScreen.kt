@@ -4,21 +4,22 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonObject
 import com.vezdekod.ggdteam.attributes.Attribute
 import com.vezdekod.ggdteam.categories.Category
+import com.vezdekod.ggdteam.databinding.ActivitySplashScreenBinding
 import com.vezdekod.ggdteam.menu.MenuItem
 import kotlinx.coroutines.*
-import org.json.JSONObject
 import java.nio.charset.Charset
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    lateinit var binding: ActivitySplashScreenBinding
+
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val dataLoadJob = GlobalScope.launch(Dispatchers.IO) {
             categoriesLoad()
