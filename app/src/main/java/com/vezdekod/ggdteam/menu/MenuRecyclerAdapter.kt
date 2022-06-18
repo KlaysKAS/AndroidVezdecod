@@ -1,7 +1,7 @@
 package com.vezdekod.ggdteam.menu
 
 import android.annotation.SuppressLint
-import android.graphics.Paint
+import android.graphics.drawable.BitmapDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,23 +18,15 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>): RecyclerView.Ad
         private val ivSpecials: ImageView = itemView.findViewById(R.id.menu_item_card_specials)
         private val ivName: TextView = itemView.findViewById(R.id.menu_item_card_name)
         private val ivWeight: TextView = itemView.findViewById(R.id.menu_item_card_weight)
-        private val ivNewCost: TextView = itemView.findViewById(R.id.menu_item_card_new_cost_text)
-        private val ivOldCost: TextView = itemView.findViewById(R.id.menu_item_card_old_cost_text)
+        private val ivCost: TextView = itemView.findViewById(R.id.menu_item_card_cost_text)
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
-//            ivImage.setImageBitmap()
-//            ivSpecials.setImageBitmap()
+            ivImage.setImageResource(R.mipmap.photo)
+            ivSpecials.setImageResource(R.drawable.ic_vegeterian)
             ivName.text = item.name
             ivWeight.text = "${item.measure} ${item.measure_unit}"
-            ivNewCost.text = "${item.priceCurrent} ₽"
-            if (item.priceOld != null) {
-                ivOldCost.text =  "${item.priceOld} ₽"
-                ivOldCost.paintFlags = ivOldCost.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            }
-            else {
-                ivOldCost.visibility = View.GONE
-            }
+            ivCost.text = "${item.priceCurrent} ₽ ${item.priceOld} ₽"
         }
     }
 
