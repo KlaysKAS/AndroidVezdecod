@@ -3,6 +3,7 @@ package com.vezdekod.ggdteam.cart
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.App
@@ -30,6 +31,14 @@ class CartActivity : AppCompatActivity(), UpdateCostInt {
 
     @SuppressLint("SetTextI18n")
     override fun update() {
+        if (App.cart.itemCount == 0) {
+            binding.emptyCart.visibility = View.VISIBLE
+            binding.cartButton.visibility = View.GONE
+        }
+        else {
+            binding.emptyCart.visibility = View.GONE
+            binding.cartButton.visibility = View.VISIBLE
+        }
         binding.cartButton.text = "Заказать за ${App.cart.getTotalCost() / 100.0} ₽"
     }
 }
