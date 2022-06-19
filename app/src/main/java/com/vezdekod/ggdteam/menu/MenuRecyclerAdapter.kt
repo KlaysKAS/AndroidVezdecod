@@ -16,9 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.DetailsActivity
 import com.vezdekod.ggdteam.R
+import com.vezdekod.ggdteam.cart.UpdateCostInt
 import java.lang.Exception
 
-class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
+class MenuRecyclerAdapter(private val menuItem: List<MenuItem>, val up: UpdateCostInt):
     RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
     @SuppressLint("ResourceAsColor")
@@ -78,6 +79,7 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
                 ivButtonCost.visibility = View.INVISIBLE
                 ivBuyer.visibility = View.VISIBLE
                 ivCount.text = App.cart.getItemCount(item).toString()
+                up.update()
             }
             ivButMinus.setOnClickListener {
                 App.cart.deleteItem(item)
@@ -87,10 +89,12 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
                     ivButtonCost.visibility = View.VISIBLE
                     ivBuyer.visibility = View.GONE
                 }
+                up.update()
             }
             ivButPlus.setOnClickListener {
                 App.cart.addItem(item)
                 ivCount.text = App.cart.getItemCount(item).toString()
+                up.update()
             }
         }
     }

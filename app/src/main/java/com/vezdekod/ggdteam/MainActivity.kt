@@ -3,19 +3,16 @@ package com.vezdekod.ggdteam
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toolbar
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.drawable.toBitmap
-import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.get
 import androidx.recyclerview.widget.GridLayoutManager
 import com.vezdekod.ggdteam.cart.CartActivity
-import com.vezdekod.ggdteam.cart.CartItem
+import com.vezdekod.ggdteam.cart.UpdateCostInt
 import com.vezdekod.ggdteam.databinding.ActivityMainBinding
 import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), UpdateCostInt {
     lateinit var binding: ActivityMainBinding
 
     @SuppressLint("ResourceType")
@@ -33,8 +30,15 @@ class MainActivity : AppCompatActivity() {
 
         val menuRecycler = binding.mainMenuRecycler
         menuRecycler.layoutManager = GridLayoutManager(this, 2)
-        val adapter = MenuRecyclerAdapter(App.menu)
+        val adapter = MenuRecyclerAdapter(App.menu, this)
         menuRecycler.adapter = adapter
+
+        if (App.cart.itemCount > 0) View.VISIBLE else View.INVISIBLE
+
+        binding.mainCartCost.setOnClickListener {
+            val intent = Intent(baseContext, CartActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.mainLogo.menu.get(0).setOnMenuItemClickListener {
             when (it.itemId) {
@@ -51,5 +55,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         binding.mainMenuRecycler.adapter?.notifyDataSetChanged()
+        binding.mainCartCost.visibility =
+            if (App.cart.itemCount > 0) View.VISIBLE else View.GONE
+        binding.mainCartCostText.text = "${App.cart.getTotalCost() / 100.0} ₽"
+    }
+
+    override fun update() {
+        binding.mainCartCost.visibility =
+            if (App.cart.itemCount > 0) View.VISIBLE else View.GONE
+        binding.mainCartCostText.text = "${App.cart.getTotalCost() / 100.0} ₽"
     }
 }
