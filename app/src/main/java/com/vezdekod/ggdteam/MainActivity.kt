@@ -8,16 +8,14 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.vezdekod.ggdteam.cart.CartActivity
 import com.vezdekod.ggdteam.cart.UpdateCostInt
 import com.vezdekod.ggdteam.databinding.ActivityMainBinding
 import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
-import java.util.*
 
-class MainActivity : AppCompatActivity(), UpdateCostInt {
+class MainActivity : AppCompatActivity(), UpdateCostInt, EmptySearchResult {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var gridLayoutManager: GridLayoutManager
@@ -38,7 +36,7 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
         val menuRecycler = binding.mainMenuRecycler
         gridLayoutManager = GridLayoutManager(this, 2)
         menuRecycler.layoutManager = gridLayoutManager
-        val adapter = MenuRecyclerAdapter(App.menu, this)
+        val adapter = MenuRecyclerAdapter(App.menu, this, this)
         menuRecycler.adapter = adapter
 
         if (App.cart.itemCount > 0) View.VISIBLE else View.INVISIBLE
@@ -126,4 +124,12 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
             // Записываем текущую потребность продолжить вторую прокрутку в мониторе прокрутки RecyclerView
         }
     }
+
+    override fun showEmptySearch(mode: Int) {
+        binding.emptySearch.visibility = mode
+    }
+}
+
+interface EmptySearchResult {
+    fun showEmptySearch(mode: Int)
 }
