@@ -1,6 +1,7 @@
 package com.vezdekod.ggdteam
 
 import android.animation.Animator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,9 +10,12 @@ import com.vezdekod.ggdteam.attributes.Attribute
 import com.vezdekod.ggdteam.categories.Category
 import com.vezdekod.ggdteam.databinding.SplashActivityBinding
 import com.vezdekod.ggdteam.menu.MenuItem
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.nio.charset.Charset
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
     private lateinit var binding: SplashActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +29,7 @@ class SplashScreen : AppCompatActivity() {
         animView.setAnimation("anim/logo_anim.json")
         animView.playAnimation()
 
-        animView.addAnimatorListener(object :Animator.AnimatorListener{
+        animView.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(p0: Animator?) {
                 return
             }
@@ -45,7 +49,7 @@ class SplashScreen : AppCompatActivity() {
             }
         })
 
-        val dataLoadJob = GlobalScope.launch(Dispatchers.IO) {
+        GlobalScope.launch(Dispatchers.IO) {
             categoriesLoad()
             attributesLoad()
             menuLoad()
