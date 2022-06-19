@@ -11,10 +11,11 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.DetailsActivity
+import com.vezdekod.ggdteam.EmptySearchResult
 import com.vezdekod.ggdteam.R
 import com.vezdekod.ggdteam.cart.UpdateCostInt
 
-class MenuRecyclerAdapter(private var menuItem: List<MenuItem>, val up: UpdateCostInt) :
+class MenuRecyclerAdapter(private var menuItem: List<MenuItem>, val up: UpdateCostInt, val searchR: EmptySearchResult) :
     RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>(), Filterable {
     val menuItemFilter = menuItem.toMutableList()
 
@@ -46,8 +47,11 @@ class MenuRecyclerAdapter(private var menuItem: List<MenuItem>, val up: UpdateCo
                 return filterResults
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
                 menuItem = p1?.values as List<MenuItem>
+                if (menuItem.isEmpty()) searchR.showEmptySearch(View.VISIBLE)
+                else searchR.showEmptySearch(View.GONE)
                 notifyDataSetChanged()
             }
         }

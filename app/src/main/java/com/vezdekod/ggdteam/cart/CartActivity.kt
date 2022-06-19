@@ -1,9 +1,9 @@
 package com.vezdekod.ggdteam.cart
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.databinding.ActivityCartBinding

@@ -1,36 +1,63 @@
 package com.vezdekod.ggdteam
 
+import android.animation.Animator
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieDrawable
 import com.vezdekod.ggdteam.attributes.Attribute
 import com.vezdekod.ggdteam.categories.Category
+import com.vezdekod.ggdteam.databinding.SplashActivityBinding
 import com.vezdekod.ggdteam.menu.MenuItem
-import kotlinx.coroutines.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.nio.charset.Charset
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    private lateinit var binding: SplashActivityBinding
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = SplashActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val dataLoadJob = GlobalScope.launch(Dispatchers.IO) {
+        val animView = binding.animationView
+        animView.setRepeatCount(1)
+        animView.setRepeatMode(LottieDrawable.REVERSE)
+        animView.setAnimation("anim/logo_anim.json")
+        animView.playAnimation()
+
+        animView.addAnimatorListener(object : Animator.AnimatorListener {
+            override fun onAnimationStart(p0: Animator?) {
+                return
+            }
+
+            override fun onAnimationEnd(p0: Animator?) {
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+
+            override fun onAnimationCancel(p0: Animator?) {
+                return
+            }
+
+            override fun onAnimationRepeat(p0: Animator?) {
+                return
+            }
+        })
+
+        GlobalScope.launch(Dispatchers.IO) {
             categoriesLoad()
             attributesLoad()
             menuLoad()
         }
 
-        runBlocking {
-            launch(Dispatchers.IO) {
-                dataLoadJob.join()
-            }
-        }
 
-
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
     }
 
     private fun categoriesLoad() {

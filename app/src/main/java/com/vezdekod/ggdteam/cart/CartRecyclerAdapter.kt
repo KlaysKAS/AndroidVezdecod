@@ -5,7 +5,6 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -26,7 +25,7 @@ class CartRecyclerAdapter(private val menuItem: MutableList<MenuItem> = App.cart
         private val ivNewCost: TextView = itemView.findViewById(R.id.cart_item_new_price)
         private val ivOldCost: TextView = itemView.findViewById(R.id.cart_item_old_price)
 
-        @SuppressLint("SetTextI18n")
+        @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
         fun bind(item: MenuItem) {
             ivImage.setImageResource(R.drawable.food_example)
             ivName.text = item.name

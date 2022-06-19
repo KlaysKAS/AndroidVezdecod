@@ -1,9 +1,9 @@
 package com.vezdekod.ggdteam
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.vezdekod.ggdteam.databinding.ActivityDetailsBinding
 import com.vezdekod.ggdteam.menu.MenuItem
 
