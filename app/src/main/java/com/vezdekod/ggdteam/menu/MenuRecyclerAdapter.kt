@@ -11,18 +11,17 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.App
 import com.vezdekod.ggdteam.DetailsActivity
 import com.vezdekod.ggdteam.R
-import java.lang.Exception
 
 class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
     RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
 
     @SuppressLint("ResourceAsColor")
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val defaultCardViewElevation = 5.5f
         private val ivImage: ImageView = itemView.findViewById(R.id.menu_item_card_photo)
         private val ivSpicy: ImageView = itemView.findViewById(R.id.menu_item_card_specials_spicy)
         private val ivVegetarian: ImageView = itemView.findViewById(R.id.menu_item_card_specials_vegetarian)
@@ -36,6 +35,7 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
         private val ivButPlus: ImageButton = itemView.findViewById(R.id.menu_item_plus)
         private val ivCount: TextView = itemView.findViewById(R.id.menu_item_counter)
         private val ivBuyer: LinearLayout = itemView.findViewById(R.id.main_item_linear)
+        private val commonCardView: CardView = itemView.findViewById(R.id.main_card_cost)
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
@@ -59,8 +59,9 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
             ivCount.text = count.toString()
             if (count > 0) {
                 ivButtonCost.isClickable = false
-                ivButtonCost.visibility = View.INVISIBLE
+                ivButtonCost.visibility = View.VISIBLE
                 ivBuyer.visibility = View.VISIBLE
+                commonCardView.elevation = 0f
             } else {
                 ivButtonCost.isClickable = true
                 ivButtonCost.visibility = View.VISIBLE
@@ -78,6 +79,7 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
                 ivButtonCost.visibility = View.INVISIBLE
                 ivBuyer.visibility = View.VISIBLE
                 ivCount.text = App.cart.getItemCount(item).toString()
+                commonCardView.elevation = 0f
             }
             ivButMinus.setOnClickListener {
                 App.cart.deleteItem(item)
@@ -86,6 +88,7 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>):
                     ivButtonCost.isClickable = true
                     ivButtonCost.visibility = View.VISIBLE
                     ivBuyer.visibility = View.GONE
+                    commonCardView.elevation = defaultCardViewElevation
                 }
             }
             ivButPlus.setOnClickListener {

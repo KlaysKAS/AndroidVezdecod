@@ -143,6 +143,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:background="@color/bg_color"
             android:orientation="horizontal" >
             <ImageButton
                 android:id="@+id/menu_item_minus"
@@ -151,8 +152,6 @@
                 android:foregroundGravity=""
                 android:backgroundTint="@color/white"
                 android:src="@drawable/ic_minus"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_item_image"
-                app:layout_constraintStart_toEndOf="@+id/cart_item_image"
                 app:tint="@color/red" />
 
             <TextView
@@ -160,12 +159,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="2"
+                android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:textSize="30sp"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
-                app:layout_constraintStart_toEndOf="@+id/cart_item_minus"
-                app:layout_constraintTop_toTopOf="@+id/cart_item_minus" />
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/menu_item_plus"
@@ -173,8 +170,6 @@
                 android:layout_height="match_parent"
                 android:backgroundTint="@color/white"
                 android:src="@drawable/ic_plus"
-                app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
-                app:layout_constraintStart_toEndOf="@+id/cart_item_counter"
                 app:tint="@color/red" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

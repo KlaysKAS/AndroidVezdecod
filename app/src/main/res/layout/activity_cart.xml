@@ -26,9 +26,21 @@
         app:layout_constraintTop_toBottomOf="@+id/cart_toolbar"
         tools:listitem="@layout/card_cart_item" />
 
+    <TextView
+        android:id="@+id/empty_cart_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/cart_toolbar"
+        app:layout_constraintBottom_toTopOf="@id/cart_button"
+        android:text="@string/empty_cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="16sp"
+        android:layout_marginHorizontal="20dp" />
+
     <Button
         android:id="@+id/cart_button"
-        style="@style/TextAppearance.AppCompat.Button"
+        style="@style/addButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

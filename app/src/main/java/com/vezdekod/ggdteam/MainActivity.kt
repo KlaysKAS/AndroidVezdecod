@@ -16,12 +16,11 @@ import com.vezdekod.ggdteam.databinding.ActivityMainBinding
 import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
 
 class MainActivity : AppCompatActivity() {
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -36,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         val adapter = MenuRecyclerAdapter(App.menu)
         menuRecycler.adapter = adapter
 
-        binding.mainLogo.menu.get(0).setOnMenuItemClickListener {
+        binding.mainLogo.menu[0].setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_cart -> {
                     intent = Intent(baseContext, CartActivity::class.java)
@@ -48,6 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onResume() {
         super.onResume()
         binding.mainMenuRecycler.adapter?.notifyDataSetChanged()

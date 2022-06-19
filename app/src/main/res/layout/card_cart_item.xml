@@ -8,7 +8,7 @@
         android:id="@+id/cart_item_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_margin="15dp"
+        android:layout_margin="16dp"
         android:src="@drawable/food_example"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -16,74 +16,89 @@
 
     <TextView
         android:id="@+id/cart_item_name"
-        android:layout_width="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:layout_marginHorizontal="16dp"
         android:ellipsize="end"
-        android:lines="2"
+        android:singleLine="true"
         android:text="Том Ям"
         android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/cart_item_image"
         app:layout_constraintTop_toTopOf="@+id/cart_item_image" />
 
-    <TextView
-        android:id="@+id/cart_item_old_price"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="15dp"
-        android:ellipsize="end"
+        android:layout_marginHorizontal="16dp"
+        android:gravity="end"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/counter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintStart_toEndOf="@+id/counter"
+        app:layout_constraintTop_toTopOf="@id/counter">
+
+        <TextView
+            android:id="@+id/cart_item_new_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_medium"
+            android:text="480 Р"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/cart_item_old_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:text="560 Р"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:gravity="center"
-        android:lines="2"
-        android:text="560 Р"
-        app:layout_constraintBottom_toBottomOf="@+id/cart_item_image"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/cart_item_image"
+        app:layout_constraintStart_toEndOf="@id/cart_item_image">
 
-    <TextView
-        android:id="@+id/cart_item_new_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:lines="2"
-        android:text="480 Р"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/cart_item_old_price"
-        app:layout_constraintEnd_toEndOf="@+id/cart_item_old_price" />
+        <ImageButton
+            android:id="@+id/cart_item_minus"
+            android:layout_width="44dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/bg_color"
+            android:src="@drawable/ic_minus"
+            app:tint="@color/red" />
 
-    <ImageButton
-        android:id="@+id/cart_item_minus"
-        android:layout_width="44dp"
-        android:layout_height="48dp"
-        android:layout_marginLeft="15dp"
-        android:backgroundTint="@color/bg_color"
-        android:src="@drawable/ic_minus"
-        app:layout_constraintBottom_toBottomOf="@+id/cart_item_image"
-        app:layout_constraintStart_toEndOf="@+id/cart_item_image"
-        app:tint="@color/red" />
+        <TextView
+            android:id="@+id/cart_item_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="2"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/cart_item_counter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:text="2"
-        android:textSize="30sp"
+        <ImageButton
+            android:id="@+id/cart_item_plus"
+            android:layout_width="44dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@color/bg_color"
+            android:src="@drawable/ic_plus"
+            app:tint="@color/red" />
 
-        app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
-        app:layout_constraintStart_toEndOf="@+id/cart_item_minus"
-        app:layout_constraintTop_toTopOf="@+id/cart_item_minus" />
-
-    <ImageButton
-        android:id="@+id/cart_item_plus"
-        android:layout_width="44dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="15dp"
-        android:backgroundTint="@color/bg_color"
-        android:src="@drawable/ic_plus"
-        app:layout_constraintBottom_toBottomOf="@+id/cart_item_minus"
-        app:layout_constraintStart_toEndOf="@+id/cart_item_counter"
-        app:tint="@color/red" />
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
