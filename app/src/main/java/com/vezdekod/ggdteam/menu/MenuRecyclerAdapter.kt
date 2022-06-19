@@ -6,10 +6,7 @@ import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.vezdekod.ggdteam.App
@@ -17,21 +14,60 @@ import com.vezdekod.ggdteam.DetailsActivity
 import com.vezdekod.ggdteam.R
 import com.vezdekod.ggdteam.cart.UpdateCostInt
 
-class MenuRecyclerAdapter(private val menuItem: List<MenuItem>, val up: UpdateCostInt):
-    RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>() {
+class MenuRecyclerAdapter(private var menuItem: List<MenuItem>, val up: UpdateCostInt) :
+    RecyclerView.Adapter<MenuRecyclerAdapter.MenuViewHolder>(), Filterable {
+    val menuItemFilter = menuItem.toMutableList()
+
+    override fun getFilter(): Filter {
+        val filter = object : Filter() {
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+                val filterResults = FilterResults()
+                if (p0 == null || p0.isEmpty()) {
+                    filterResults.values = menuItemFilter
+                    filterResults.count = menuItemFilter.size
+                } else {
+                    val searchString = p0.toString().lowercase().replace(" ", "").replace(",", "")
+                        .replace("\"", "").replace("(", "").replace(")", "")
+                    val menus = mutableListOf<MenuItem>()
+                    for (menu in menuItemFilter) {
+                        if (menu.name.lowercase().replace(" ", "").replace(",", "")
+                                .replace("\"", "").replace("(", "").replace(")", "")
+                                .contains(searchString) ||
+                            menu.description.lowercase().replace(" ", "").replace(",", "")
+                                .replace("\"", "").replace("(", "").replace(")", "")
+                                .contains(searchString)
+                        ) {
+                            menus.add(menu)
+                        }
+                    }
+                    filterResults.values = menus
+                    filterResults.count = menus.size
+                }
+                return filterResults
+            }
+
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+                menuItem = p1?.values as List<MenuItem>
+                notifyDataSetChanged()
+            }
+        }
+        return filter
+    }
 
     @SuppressLint("ResourceAsColor")
     inner class MenuViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val defaultCardViewElevation = 5.5f
         private val ivImage: ImageView = itemView.findViewById(R.id.menu_item_card_photo)
         private val ivSpicy: ImageView = itemView.findViewById(R.id.menu_item_card_specials_spicy)
-        private val ivVegetarian: ImageView = itemView.findViewById(R.id.menu_item_card_specials_vegetarian)
+        private val ivVegetarian: ImageView =
+            itemView.findViewById(R.id.menu_item_card_specials_vegetarian)
         private val ivSale: ImageView = itemView.findViewById(R.id.menu_item_card_specials_sale)
         private val ivName: TextView = itemView.findViewById(R.id.menu_item_card_name)
         private val ivWeight: TextView = itemView.findViewById(R.id.menu_item_card_weight)
         private val ivNewCost: TextView = itemView.findViewById(R.id.menu_item_card_new_cost_text)
         private val ivOldCost: TextView = itemView.findViewById(R.id.menu_item_card_old_cost_text)
-        private val ivButtonCost: LinearLayout = itemView.findViewById(R.id.menu_item_card_cost_card)
+        private val ivButtonCost: LinearLayout =
+            itemView.findViewById(R.id.menu_item_card_cost_card)
         private val ivButMinus: ImageButton = itemView.findViewById(R.id.menu_item_minus)
         private val ivButPlus: ImageButton = itemView.findViewById(R.id.menu_item_plus)
         private val ivCount: TextView = itemView.findViewById(R.id.menu_item_counter)
@@ -41,9 +77,12 @@ class MenuRecyclerAdapter(private val menuItem: List<MenuItem>, val up: UpdateCo
         @SuppressLint("SetTextI18n")
         fun bind(item: MenuItem) {
             ivImage.setImageResource(R.drawable.food_example)
-            if (item.tagId.contains(2)) ivVegetarian.visibility = View.VISIBLE else ivVegetarian.visibility = View.GONE
-            if (item.tagId.contains(4)) ivSpicy.visibility = View.VISIBLE else ivSpicy.visibility = View.GONE
-            if (item.priceOld != null) ivSale.visibility = View.VISIBLE else ivSale.visibility = View.GONE
+            if (item.tagId.contains(2)) ivVegetarian.visibility =
+                View.VISIBLE else ivVegetarian.visibility = View.GONE
+            if (item.tagId.contains(4)) ivSpicy.visibility = View.VISIBLE else ivSpicy.visibility =
+                View.GONE
+            if (item.priceOld != null) ivSale.visibility = View.VISIBLE else ivSale.visibility =
+                View.GONE
 
             ivName.text = item.name
             ivWeight.text = "${item.measure} ${item.measure_unit}"

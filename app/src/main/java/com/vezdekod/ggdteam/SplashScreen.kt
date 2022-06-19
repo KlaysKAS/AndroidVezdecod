@@ -40,7 +40,7 @@ class SplashScreen : AppCompatActivity() {
         file.read(buff)
         file.close()
         val json = String(buff, Charset.forName("UTF-8"))
-        Category.getListFromJSON(json)?.let { App.category = it }
+        Category.getListFromJSON(json)?.let { App.category = it.sortedBy { it.id } }
     }
 
     private fun attributesLoad() {
@@ -60,6 +60,6 @@ class SplashScreen : AppCompatActivity() {
         file.read(buff)
         file.close()
         val json = String(buff, Charset.forName("UTF-8"))
-        MenuItem.getListFromJSON(json)?.let { App.menu = it }
+        MenuItem.getListFromJSON(json)?.let { App.menu = it.sortedBy { it.categoryId } }
     }
 }
