@@ -20,7 +20,6 @@ class CartActivity : AppCompatActivity(), UpdateCostInt {
         val cartRecycler = binding.cartRecycler
         cartRecycler.layoutManager = LinearLayoutManager(this)
         cartRecycler.adapter = CartRecyclerAdapter(up = this)
-
         update()
         binding.cartToolbar.setNavigationOnClickListener {
             finish()
