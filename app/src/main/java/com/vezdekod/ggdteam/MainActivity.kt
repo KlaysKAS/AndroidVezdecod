@@ -41,8 +41,6 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
         val adapter = MenuRecyclerAdapter(App.menu, this)
         menuRecycler.adapter = adapter
 
-        if (App.cart.itemCount > 0) View.VISIBLE else View.INVISIBLE
-
         binding.mainCartCost.setOnClickListener {
             val intent = Intent(baseContext, CartActivity::class.java)
             startActivity(intent)
@@ -118,7 +116,7 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
             binding.mainMenuRecycler.scrollToPosition(index)
         } else if (index <= lastItem) {
             // Когда элемент, который нужно разместить сверху, уже отображается на экране, вычисляем расстояние от исходной точки экрана
-            val top: Int = binding.mainMenuRecycler.getChildAt(index - firstItem).getTop()
+            val top: Int = binding.mainMenuRecycler.getChildAt(index - firstItem).top
             binding.mainMenuRecycler.scrollBy(0, top)
         } else {
             // Когда элемент, который нужно покрыть, находится за последним элементом, отображаемым в данный момент
