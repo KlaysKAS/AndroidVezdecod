@@ -15,6 +15,7 @@ import com.vezdekod.ggdteam.cart.CartActivity
 import com.vezdekod.ggdteam.cart.UpdateCostInt
 import com.vezdekod.ggdteam.databinding.ActivityMainBinding
 import com.vezdekod.ggdteam.menu.MenuRecyclerAdapter
+import java.util.*
 
 class MainActivity : AppCompatActivity(), UpdateCostInt {
     private lateinit var binding: ActivityMainBinding
@@ -47,15 +48,8 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
             startActivity(intent)
         }
 
-        binding.mainLogo.menu[0].setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.action_cart -> {
-                    intent = Intent(baseContext, CartActivity::class.java)
-                    startActivity(intent)
-                    true
-                }
-                else -> false
-            }
+        binding.cartButton.setOnClickListener {
+            startActivity(Intent(baseContext, CartActivity::class.java))
         }
 
         binding.editTextSearch.addTextChangedListener(object : TextWatcher {
@@ -103,6 +97,7 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
         binding.mainCartCost.visibility =
             if (App.cart.itemCount > 0) View.VISIBLE else View.GONE
         binding.mainCartCostText.text = "${App.cart.getTotalCost() / 100.0} ₽"
+        binding.counterText.text = App.cart.itemCount.toString()
     }
 
     @SuppressLint("SetTextI18n")
@@ -110,6 +105,7 @@ class MainActivity : AppCompatActivity(), UpdateCostInt {
         binding.mainCartCost.visibility =
             if (App.cart.itemCount > 0) View.VISIBLE else View.GONE
         binding.mainCartCostText.text = "${App.cart.getTotalCost() / 100.0} ₽"
+        binding.counterText.text = App.cart.itemCount.toString()
     }
 
     private fun moveToPosition(index: Int) {

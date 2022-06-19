@@ -6,6 +6,7 @@
     <string name="fats">Жиры</string>
     <string name="carbohydrates">Углеводы</string>
     <string name="cart_title">Корзина</string>
+    <string name="empty_cart">Пусто, выберите блюда в каталоге :)</string>
     <string name="empty_cart_message">Пусто, выберите блюда в каталоге :)</string>
     <string name="searchHint">Подобрать блюда</string>
 </resources>
